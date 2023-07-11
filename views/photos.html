@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block bodyattr %} id="photos"{% endblock %}
+{% block body %}
+<div id="user-dummy">
+    <div class="pl_user">
+        <div class="dp"><img></div>
+        <div class="name"></div>
+        <div class="msg"></div>
+        <div class="buttons">
+            <a href="javascript:void(0)" class="print_button"> <img src="./images/Save.png"/> </a>
+            <a href="javascript:void(0)" class="printed_button">Printed</a>
+        </div>
+    </div>
+</div>
+
+<div id="wrapper">
+
+    <div class="main_header">
+
+        <div class="header_img">
+            <img src="./images/searech_icon.png"/>
+        </div>
+        <input id="filter" type="text" autocomplete="off" placeholder="Search…">
+    </div>
+
+    <div id="photos_list">
+
+    </div>
+</div>
+
+{% endblock %}
+{% block footer %}
+<script type="text/javascript" src="/javascripts/photos.js"></script>
+{% endblock %}

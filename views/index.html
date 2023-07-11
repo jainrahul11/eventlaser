@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+
+{% block bodyattr %} id="home"{% endblock %}
+{% block body %}
+<div id="splash-dummy">
+    <div class="splash">
+        <div class="aim">
+            <img src="/images/crosshair.png"/>
+        </div>
+
+        <!--<img class="sles" src="/views/splash.svg" alt="">-->
+        {% include "splash.svg" %}
+        <div class="dp"><img src=""></div>
+        <div class="name"></div>
+        <div class="msg"></div>
+    </div>
+</div>
+<div id="settings-panel">
+    <h1>Settings</h1>
+
+    <form>
+        <label>
+            <span class="label">User Life(seconds)</span>
+            <span class="input slider" data-min="60" data-max="3600" data-step="60"></span>
+            <input type="number" name="user_life">
+        </label>
+        <label>
+            <span class="label">User Blob Height(%)</span>
+            <span class="input slider" data-min="25" data-max="75" data-step="5"></span>
+            <input type="number" name="blob_height">
+        </label>
+        <label>
+            <span class="label">User Activity History</span>
+            <span class="input slider" data-min="10" data-max="100" data-step="5"></span>
+            <input type="number" name="history_length">
+        </label>
+        <label>
+            <span class="label">Shock Sensitivity</span>
+            <span class="input slider" data-min="1" data-max="5" data-step="1"></span>
+            <input type="number" name="sensitivity">
+        </label>
+        <label>
+            <span class="label">Background</span>
+				<span class="input background">
+					<img src=""><a class="bg-remove" href="javascript:void(0)">✖</a><br>
+					<input type="file" name="background" accept="image/*">
+					<input type="hidden" name="background">
+				</span>
+        </label>
+
+        <div class="colors">
+            <span class="label">Colors</span>
+            <span class="list color-list"></span>
+            <a href="javascript:void(0)" class="add-color">✚</a>
+        </div>
+        <div>
+            <input type="button" id="settings-save" value="Save">
+            <input type="button" id="settings-cancel" value="Cancel">
+        </div>
+    </form>
+    <div id="color-dummy">
+			<span class="color">
+				<input type="text" name="colors" class="color-input"><br/>
+				<a class="color-remove" href="javascript:void(0)">✖</a>
+			</span>
+    </div>
+</div>
+
+<div class="form-group">
+    <div id="headerEventModal" data-backdrop="static" class="modal fade in myModalDigital" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Event Select</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="myModalDigitalRow">
+                        <p>Select event</p>
+                        <select class="form-control" id="selectEvent">
+                            <option value="null" disabled>--Select Event</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="productSubmit()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="headerEventModalBackground"  class="modal-backdrop fade in"></div>
+
+{% endblock %}
+{% block footer %}
+<script type="text/javascript" src="/javascripts/app.js"></script>
+
+{% endblock %}

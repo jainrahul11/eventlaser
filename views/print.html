@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block bodyattr %} id="print"{% endblock %}
+{% block body %}
+	<div id="wrapper">
+		<div class="splash">
+	        {% include "splash.svg" %}
+	        <div class="dp"><img src="{{ user.dp }}"></div>
+	        <div class="name">{{ user.name }}</div>
+	        <div class="msg">{{ user.msg }}</div>
+	    </div>
+		<!--<div id="logo"><img src="/images/magicTap.png"></div>-->
+	</div>
+	<div id="border"></div>
+{% endblock %}
+{% block footer %}
+	<script>
+		$(document).ready( function() {
+			var rgb = function(c, op) {
+		        var rgb = 'rgb(' + c.r + ',' + c.g + ',' + c.b;
+		        if(op) rgb += ',' + op;
+		        rgb += ')';
+		        return rgb;
+		    };
+			$('.splash svg path').css({fill: rgb({r: {{ user.color.r }}, g: {{ user.color.g }}, b: {{ user.color.b }} })});
+			var inv = {r: 255-{{ user.color.r }}, g: 255-{{ user.color.g }}, b: 255-{{ user.color.b }}};
+			$('.splash div').css({color: rgb(inv)});
+
+			$('.splash .name').css({background: rgb({r: {{ user.color.r }}, g: {{ user.color.g }}, b: {{ user.color.b }} })});
+			$('.splash .msg').css({background: rgb({r: {{ user.color.r }}, g: {{ user.color.g }}, b: {{ user.color.b }} })});
+
+
+		var shadow = ({{ user.color.r }} + {{ user.color.g }} + {{ user.color.b }})/3;
+	        if(shadow > 255/2) shadow = 0;
+	        else shadow = 255;
+	        shadow = {r: shadow, g: shadow, b: shadow};
+	        $('.splash .dp img').css({
+	            'border-color': rgb(inv, 0.8),
+	            'box-shadow': '0px 0px 5px ' + rgb(shadow, 0.8)
+	        });
+	        $('.splash').height(250);
+            $('.splash').width(250);
+            $('.splash').find('svg').height(250);
+            $('.splash').find('svg').width(250);
+            var css = {};
+            var dh = (($('#wrapper').height() - $('#logo').height()) * 0.95 < $('#wrapper').width())?(($('#wrapper').height() - $('#logo').height()) * 0.95):$('#wrapper').width();
+            dh = dh*1.8;
+            var factor = dh/580;
+            css.top = '50%';
+            css.left = '32%';
+            css.marginLeft = 0;
+            css.marginTop = -580/2 + $('#logo').height();
+            css['-webkit-transform'] = 'scale(' + factor + ',' + factor + ')';
+            $('.splash').css(css);
+			window.print();
+		});
+	</script>
+{% endblock %}

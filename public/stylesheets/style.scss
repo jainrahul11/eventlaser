@@ -1,0 +1,295 @@
+@import "compass/css3";
+@import "reset";
+
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato-Regular.woff') format('woff'); 
+    text-rendering: optimizeLegibility;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato-Bold.woff') format('woff'); 
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato-Italic.woff') format('woff'); 
+    font-style: italic;
+    text-rendering: optimizeLegibility;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('/fonts/Lato-BoldItalic.woff') format('woff'); 
+    font-style: italic;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+
+html, body {width: 100%; height: 100%;overflow: hidden;}
+
+body {
+  font: 14px Lato, Helvetica, Arial, sans-serif;
+  background-size: cover;
+  background-position: center;
+}
+
+.splash {
+	position: absolute;
+	font-size: 150%;
+	transition: 0.6s;
+	> div {position: absolute;text-align: center; display: none}
+	svg {
+		width: 100%;
+		height: 100%;
+		display: none;
+		path {
+			fill: gray;
+			transition: 0.6s;
+		}
+	}
+	.aim {
+		width: 60%;
+		height: 60%;
+		max-width: 100px;
+		max-height: 100px;
+		top: 20%;
+		left: 20%;
+		display: block;
+		transition: 0.6s;
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+	.dp {
+		left: 50%;
+		top: 27.5%;
+		width: 35%;
+		margin-left: -13%;
+		height: 20%;
+		transition: 0.6s;
+		img {
+			max-width: 100%;
+			max-height: 100%;
+			border: 2px solid rgba(0,0,0,0.8);
+			border-radius: 50%;
+			box-shadow: 0px 0px 5px rgba(255,255,255, 0.8);
+		}
+	}
+	.name {
+		left: 30%;
+		right: 25%;
+		top: 49%;
+		bottom: 44%;
+		font-size: 150%;
+		text-overflow: ellipsis;
+		font-weight: bold;
+		overflow: hidden;
+	}
+	.msg {
+		left: 34%;
+		right: 28%;
+		top: 56%;
+		bottom: 30%;
+		font-size: 105%;
+		line-height: 120%;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+}
+
+body#home {
+	#splash-dummy {display: none;}
+	.splash .dp img {
+		-webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(-50%, transparent) , to(rgba(250, 250, 250, 0.12)));
+	}
+	#settings-panel {
+		opacity: 0;
+		display:none;
+		position: absolute;
+		z-index: 99999;
+		background: rgba(0,0,0,0.85);
+		width: 100%;
+		height: 100%;
+		transition: opacity 0.5s;
+		color: #FFF;
+		> * {
+			text-align: center;
+		}
+		a {
+			color: #FFF;
+			font-weight: bold;
+		}
+		h1 {
+			font-size: 3em;
+		}
+		form {
+			width: 60%;
+			margin-left: 20%;
+			height: 70%;
+			overflow-y: auto;
+			label, > div {
+				width: 100%;
+				display: block;
+				padding: 1.5% 1%;
+				border: 1px solid transparent;
+				text-align: left;
+				span.label {
+					width: 29%;
+					text-align: right;
+					font-size: 1.5em;
+					padding-right: 1%;
+					display: inline-block;
+				}
+				span.label:after {
+					content: ":";
+				}
+				> input:not(.color-input), > textarea, > .input, > .color-list {
+					width: 63%;
+					text-align: left;
+					display: inline-block;
+				}
+				> .background {
+					img {
+						max-height: 30px;
+						margin-right: 5px;
+					}
+					img+.bg-remove {
+						text-decoration: none;
+					}
+					img[src=""] {
+						display: inline;
+						width: 1px;
+						vertical-align: text-top;
+					}
+					img[src=""]:before {
+						content: "None";
+					}
+					img[src=""]+.bg-remove {
+						display: none;
+					}
+				}
+				.color-list {
+					span.color {
+						display: inline-block;
+						margin: 5px;
+						text-align: center;
+						position: relative;
+						a.color-remove {
+							position: absolute;
+							right: -5px;
+							top: -5px;
+							padding: 2px;
+							background: rgba(255,255,255,0.75);
+							border: 1px solid transparent;
+							border-radius: 50%;
+							color: rgba(0,0,0,0.75);
+							text-decoration: none;
+							font-size: 0.5em;
+						}
+					}
+				}
+				a.add-color {
+					text-decoration: none;
+					padding: 2px 4px;
+					background: rgba(255,255,255,0.75);
+					border: 1px solid transparent;
+					border-radius: 50%;
+					color: rgba(0,0,0,0.75);;
+				}
+				> input:not(.color-input), > textarea, > .input {
+					font-size: 1.5em;
+					padding-left: 1%;
+					background: rgba(255,255,255,0.6);
+					border: 1px solid rgba(255,255,255,0.7);
+				}
+				> .input.slider {
+					display: inline-block;
+					width: 50%;
+					+ input {
+						width: 10%;
+						margin-left: 2%;
+					}
+				}
+				input[type=button] {
+					width: 48%;
+					margin: 0% 0.8%;
+					text-align: center;
+				}
+			}
+		}
+		#color-dummy {display: none;}
+	}
+	#settings-panel .active{
+		opacity: 1;
+	}
+}
+body#photos {
+	height: 100%;
+	#user-dummy {display: none;}
+	#wrapper {
+		width: 100%;
+		max-width: 800px;
+		margin: 5px auto;
+		height: 100%;
+		nav {margin: 3px 0px; display: none;}
+		input#filter {width: 100%;font-size: 2.5em;padding: 0.5em 0.5em 0.5em 120px; border-radius: 10px; border: 1px solid #CCC; box-sizing: border-box; color: #777}
+		#photos_list {
+			height: 75%;
+			overflow: scroll;
+			.pl_user {
+				width: 100%; height:95px;  box-sizing: border-box; padding: 5px 5px; border: 1px solid #CCC; background: #EEE; border-radius: 10px; margin: 15px 0px;
+				.name {font-size: 3em; color: #555;}
+				.buttons {
+					/*float: right;*/
+					.printed_button {
+						display: none;
+					}
+				}
+				.dp {
+					float: left; height: 85px; margin: 0px 10px; width: 95px;
+					img {max-height: 100%; max-width: 95px;}
+				}
+
+			}
+		}
+	}
+}
+body#print {
+	#wrapper {
+		width: 100%;
+		height: 100%;
+		padding: 10px;
+		box-sizing: border-box;
+		#logo {
+			text-align: center;
+			padding: 5px;
+			box-sizing: border-box;
+			position: relative;
+			z-index: 20;
+		}
+		.splash {
+			z-index: 10;
+			* {
+				display: inline;
+			}
+			div {
+				display: block;
+			}
+		}
+	}
+	#border {
+		border: 5px solid black;
+		position: absolute;
+		z-index: 30;
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		left: 0px;
+		box-sizing: border-box;
+	}
+}
+
+@import "spectrum";
+@import "nouislider";

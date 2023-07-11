@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>unauthorized</title>
+    <link rel='shortcut icon' type='image/x-icon' href='images/favicon.png'/>
+</head>
+<body>
+<style>
+    ::-moz-selection {
+        background: #b3d4fc;
+        text-shadow: none;
+    }
+
+    ::selection {
+        background: #b3d4fc;
+        text-shadow: none;
+    }
+
+    html {
+        padding: 30px 10px;
+        font-size: 20px;
+        line-height: 1.4;
+        color: #737373;
+        background: #f0f0f0;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
+
+    html,
+    input {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    body {
+        max-width: 500px;
+        padding: 30px 20px 50px;
+        border: 1px solid #b3b3b3;
+        border-radius: 4px;
+        margin: 80px auto;
+        box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
+        background: #fcfcfc;
+        max-height: 360px;
+        min-height: 360px;
+    }
+
+    h1 {
+        margin: 0 10px;
+        font-size: 50px;
+        text-align: center;
+    }
+
+    h1 span {
+        color: #bbb;
+    }
+
+    h3 {
+        margin: 1.5em 0 0.5em;
+    }
+
+    p {
+        margin: 1em 0;
+    }
+
+    ul {
+        padding: 0 0 0 40px;
+        margin: 1em 0;
+    }
+
+    .container {
+        max-width: 380px;
+        margin: 0 auto;
+    }
+
+    input::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+    }
+
+    .logout-button {
+        width: 100%;
+        padding-top: 40px;
+        margin: 0 auto;
+        padding-bottom: 10px;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .logout-button #forBuy {
+        margin-left: 14px;
+    }
+
+    .p-content {
+        margin: 10px;
+        text-align: center;
+        width: 100%
+    }
+
+</style>
+
+<div class="container">
+
+    <h1> Not authorized <span>:(</span></h1>
+
+    <p class="p-content">Sorry, but you are not authorized to view this section</p>
+
+    <p class="p-content"> Please contact Admin </p>
+
+    <div class="logout-button">
+        <button type="button" id="logoutButton" onclick="backToLogin()" class="btn btn-info">
+            Back to Login
+        </button>
+        <a href="https://eventnerve.com/digital-message-board">
+            <button type="button" id="forBuy" class="btn btn-info">
+                Buy Now
+            </button>
+        </a>
+    </div>
+
+</div>
+<script>
+    function backToLogin() {
+        window.location.href = 'https://login.eventnerve.com/#!/?product=laserShoot&isLogin=false'
+    }
+</script>
+</body>
+</html>
